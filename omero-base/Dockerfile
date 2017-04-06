@@ -9,11 +9,21 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     unzip wget supervisor \
     python2.7 python-pil python-matplotlib python-pip \
     python-numpy python-tables python-scipy \
-    openjdk-8-jre-headless ice-services  python-zeroc-ice \
+    openjdk-8-jre-headless \
     mencoder nano postgresql-client postgresql-client-common
 
-ENV BRANCH 5.2.7
-ENV ICE 3.5
+RUN apt-get -y install db5.3-util
+RUN apt-get -y install libssl-dev libbz2-dev libmcpp-dev libdb++-dev libdb-dev
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 5E6DA83306132997
+RUN apt-get install -y software-properties-common
+RUN apt-add-repository "deb http://zeroc.com/download/apt/ubuntu`lsb_release -rs` stable main"
+RUN apt-get update
+RUN apt-get -y install zeroc-ice-all-runtime zeroc-ice-all-dev
+RUN pip install "zeroc-ice>3.5,<3.7"
+
+
+ENV BRANCH 5.3.0
+ENV ICE 3.6
 
 # Path variables
 ENV OMERO_DIR /omero

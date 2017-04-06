@@ -1,3 +1,5 @@
+# Omero 5.3.0 docker dist, web frontend disabled
+
 # docker-omero
 
 Set of `Dockerfile` to setup an OMERO.server. This project aims to be used in production.
@@ -17,6 +19,9 @@ mkdir omero/ && cd omero/
 mkdir omero-data/
 mkdir docker-omero/ && cd docker-omero/
 wget https://raw.githubusercontent.com/hadim/docker-omero/master/docker-compose.yml
+cd omero-base
+docker build -t mstritt/omero-base:1.0.5 .
+cd ..
 docker-compose up  # You can use the -d option to run in the background.
 ```
 
