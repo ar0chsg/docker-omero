@@ -1,4 +1,5 @@
-# Omero 5.3.0 docker dist, web frontend disabled
+# Omero 5.3.0 docker distribution with ICE 3.6
+- added ice3.6 requirements in omero-base
 
 # docker-omero
 
